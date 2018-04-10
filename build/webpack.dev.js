@@ -21,17 +21,33 @@ module.exports = merge(baseConfig, {
           errors: true,
           warning: true
         },
-        // hot: true,
-        // historyApiFallback: true                
+        // hot: true, 当前版本有错，等下一版本出来替换
+        // historyApiFallback: true
       },
       plugins:[
-        new HtmlWebpackPlugin(),        
+        new HtmlWebpackPlugin({
+          template: './src/assets/index.html',
+        }),
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new FriendlyErrorsWebpackPlugin(),
     ],
     module:{
         rules:[
+          {
+            enforce: "pre",
+            test: /\.jsx?$/,
+            include: path.join(__dirname, '../src'),
+            exclude: /node_modules/,
+            use:[
+              {
+                loader: 'eslint-loader',
+                options:{
+                  fix:true
+                }
+              }
+            ]
+          },
           {
               test: /\.jsx?$/,
               include: path.join(__dirname, '../src'),

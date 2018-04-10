@@ -2,18 +2,18 @@ const merge = require('webpack-merge');
 const path = require('path');
 const baseConfig = require('./webpack.base.js');
 const UglifyJSPlugin  = require('uglifyjs-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = merge(baseConfig, {
     devtool: 'hidden-source-map',
     entry:{
       main: './src/index.js',
       vendor: [
-        'lodash'
+        'react',
+        'react-dom'
       ]
     },
     output: {
@@ -22,16 +22,15 @@ module.exports = merge(baseConfig, {
     },
     mode:'production',
     plugins:[
-      new HtmlWebpackPlugin(),      
+      new HtmlWebpackPlugin({
+        template: './src/assets/index.html',
+      }),
       new CleanWebpackPlugin([ 'dist' ], {
         root: path.join(__dirname, '../')
       }),
-      new UglifyJSPlugin({
-        sourceMap: true
-      }),
-      new ExtractTextPlugin({
-        filename: "styles.css",
-        allChunks: true
+      new MiniCssExtractPlugin({
+        filename: "[name].css",
+        chunkFilename: "[id].css"
       })
     ],
     optimization:{
@@ -51,12 +50,26 @@ module.exports = merge(baseConfig, {
              name: 'vendor', //第三方库
              priority: 10,
              enforce: true,
+          },
+          styles: {
+            name: 'styles',
+            test: /\.less|scss|css$/,
+            chunks: 'all',    // merge all the css chunk to one file
+            enforce: true
           }
        }
     },
     runtimeChunk: {
        name: 'manifest'  // webpack会添加一个只包含运行时(runtime)额外代码块到每一个入口
-      }
+      },
+    minimizer: [
+      new UglifyJSPlugin({
+        sourceMap: true,
+        cache: true,
+        parallel: true
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
     },
     module:{
       rules:[
@@ -68,24 +81,26 @@ module.exports = merge(baseConfig, {
       },
         {
             test: /\.css$/,
-            use: ExtractTextPlugin.extract({
-              fallback: "style-loader",
-              use: "css-loader"
-            })
+            use: [
+              MiniCssExtractPlugin.loader,
+              "css-loader"
+            ]
         },
         {
             test: /\.scss$/,
-            use: ExtractTextPlugin.extract({
-              fallback: "style-loader",
-              use: ["css-loader","sass-loader"]
-            })
+            use: [
+              MiniCssExtractPlugin.loader,
+              "css-loader",
+              "sass-loader"
+            ]
         },
         {
             test: /\.less$/,
-            use:ExtractTextPlugin.extract({
-              fallback: "style-loader",
-              use: ["css-loader","less-loader"]
-            })
+            use:[
+              MiniCssExtractPlugin.loader,
+              "css-loader",
+              "less-loader"
+            ]
         },
         {
             test: /\.(png|svg|jpg|gif)$/,
@@ -100,5 +115,5 @@ module.exports = merge(baseConfig, {
             ]
         }
       ]
-  }    
+  }
 })
