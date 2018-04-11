@@ -21,7 +21,7 @@ module.exports = merge(baseConfig, {
           errors: true,
           warning: true
         },
-        // hot: true, 当前版本有错，等下一版本出来替换
+        // hot: true, 当前版本有错，等下一版本 ^3.1.3 出来替换
         // historyApiFallback: true
       },
       plugins:[
