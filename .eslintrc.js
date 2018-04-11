@@ -499,7 +499,7 @@ module.exports = {
         // @fixable 数组的括号内的前后禁止有空格
         'array-bracket-spacing': [
             'error',
-            'never'
+            'always'
         ],
         // @fixable 配置数组的元素之间的换行格式
         // @off 允许一行包含多个元素，方便大数量的数组的书写
@@ -576,7 +576,7 @@ module.exports = {
         // @fixable 一个缩进必须用四个空格替代
         'indent': [
             'error',
-            4,
+            2,
             {
                 SwitchCase: 1,
                 flatTernaryExpressions: true
@@ -839,7 +839,7 @@ module.exports = {
             'never'
         ],
         // @fixable 操作符左右必须有空格，比如 let sum = 1 + 2;
-        'space-infix-ops': 'error',
+        'space-infix-ops': 'off',
         // @fixable new, typeof 等后面必须有空格，++, -- 等禁止有空格，比如：
         // let foo = new Person();
         // bar = bar++;

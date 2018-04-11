@@ -37,7 +37,10 @@ module.exports = merge(baseConfig, {
           {
             enforce: "pre",
             test: /\.jsx?$/,
-            include: path.join(__dirname, '../src'),
+            include: [
+              path.join(__dirname, '../src'),
+              path.resolve(__dirname)
+            ],
             exclude: /node_modules/,
             use:[
               {
