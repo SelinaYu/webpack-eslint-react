@@ -10,11 +10,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = merge(baseConfig, {
   devtool: 'hidden-source-map',
-  entry:{
+  entry: {
     main: './src/index.js',
     vendor: [
       'react',
-      'react-dom'
+      'react-dom',
+      'antd',
+      'babel-polyfill'
     ]
   },
   output: {
@@ -76,8 +78,8 @@ module.exports = merge(baseConfig, {
       new OptimizeCSSAssetsPlugin({})
     ]
   },
-  module:{
-    rules:[
+  module: {
+    rules: [
       {
         test: /\.jsx?$/,
         include: path.join(__dirname, '../src'),

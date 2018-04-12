@@ -1,8 +1,8 @@
 module.exports={
-  entry: './src/index.js',
+  entry: [ 'babel-polyfill', './src/index.js' ],
   resolve: {
     // root:
-    extensions: [ '.js', '.json', '.css', '.less' ],
+    extensions: [ '.js', '.json', '.css', '.less', 'scss' ],
     alias: {
     }
   },

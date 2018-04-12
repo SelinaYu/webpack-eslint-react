@@ -1,8 +1,16 @@
 
 import React from 'react';
 import { render } from 'react-dom';
+import { LocaleProvider } from 'antd';
+import zh_CN from 'antd/lib/locale-provider/zh_CN';
+import 'moment/locale/zh-cn';
+import App from './page/App/';
+// import mockData from './mock/mockData';
+
 
 render(
-  <h1>Just For Fun  </h1>,
+  <LocaleProvider locale={zh_CN}>
+    <App />
+  </LocaleProvider>,
   document.getElementById('app')
 );
