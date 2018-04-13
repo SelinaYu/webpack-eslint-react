@@ -1,0 +1,7 @@
+ .logo {
+  height: 50px;
+  background: url('../../assets/images/logo.jpg') 0 0 no-repeat;
+  margin: 16px;
+  background-size: cover;
+  background-position: top;
+}

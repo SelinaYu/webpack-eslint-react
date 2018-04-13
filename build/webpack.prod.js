@@ -27,6 +27,7 @@ module.exports = merge(baseConfig, {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/assets/index.html',
+      favicon: './src/assets/images/favicon.ico'
     }),
     new CleanWebpackPlugin([ 'dist' ], {
       root: path.join(__dirname, '../')
