@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Layout, Menu, Icon } from 'antd';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import './app.css';
+import { getData } from 'actions';
 const { Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 class App extends Component {
@@ -9,6 +12,12 @@ class App extends Component {
     this.state = {
       collapsed: false
     };
+  }
+  componentDidMount = () => {
+    // const { dispatch } = this.props;
+    // dispatch(getData());
+    const { getData } = this.props;
+    getData();
   }
   onCollapse = (collapsed) => {
     this.setState({ collapsed });
@@ -55,4 +64,13 @@ class App extends Component {
     );
   }
 }
-export default App;
+const mapStateToProps = state => ({
+  ...state
+});
+const mapDispatchToProps = dispatch => ({
+  getData: () => dispatch(getData())
+});
+App.propTypes = {
+  getData: PropTypes.func.isRequired
+};
+export default connect(mapStateToProps, mapDispatchToProps)(App);
