@@ -28,6 +28,7 @@ module.exports = merge(baseConfig, {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/assets/index.html',
+      favicon: './src/assets/images/favicon.ico'
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),

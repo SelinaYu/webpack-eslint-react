@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import { LocaleProvider } from 'antd';
 import zh_CN from 'antd/lib/locale-provider/zh_CN';
 import 'moment/locale/zh-cn';
-import App from './page/App/';
+import App from './pages/App/';
 // import mockData from './mock/mockData';
 
 
