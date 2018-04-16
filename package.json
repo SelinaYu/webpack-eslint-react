@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --progress --colors --config ./build/webpack.prod.js ",
-    "start": "webpack-dev-server  --progress --colors --config ./build/webpack.dev.js"
+    "start": "webpack-dev-server  --colors --config ./build/webpack.dev.js"
   },
   "dependencies": {
     "antd": "^3.4.0",

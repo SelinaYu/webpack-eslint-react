@@ -15,12 +15,20 @@ module.exports = merge(baseConfig, {
   },
   devServer: {
     contentBase: path.join(__dirname, '../dist'),
-    port: 9090,
-    quiet: true,
+    port: 9091,
+    // quiet: true,
     overlay: {
       errors: true,
-      warning: true
+      // warning: true
     },
+    stats: {
+      reasons: false,
+      modules: false,
+      children: false,
+      chunks: false,
+      chunkModules: false
+    },
+    clientLogLevel: 'none'
     // hot: true, 当前版本有错，等下一版本 ^3.1.3 出来替换
     // historyApiFallback: true
   },
