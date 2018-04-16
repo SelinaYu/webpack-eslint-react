@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-const commonData = (state = null, action) => {
+const commonData = (state = {}, action) => {
   switch (action.type) {
     case 'GET_DATA':
       return action.data;

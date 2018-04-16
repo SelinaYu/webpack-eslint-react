@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Layout, Menu, Icon } from 'antd';
 import { connect } from 'react-redux';
+import { getData } from 'Actions/app';
 import PropTypes from 'prop-types';
 import './app.css';
-import { getData } from 'actions';
 const { Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 class App extends Component {
@@ -14,15 +14,15 @@ class App extends Component {
     };
   }
   componentDidMount = () => {
+    this.props.getData();
     // const { dispatch } = this.props;
     // dispatch(getData());
-    const { getData } = this.props;
-    getData();
   }
   onCollapse = (collapsed) => {
     this.setState({ collapsed });
   }
   render() {
+    const list = this.props.commonData.list || [];
     return (
       <Layout>
         <Sider
@@ -53,7 +53,10 @@ class App extends Component {
         <Layout style={{ minHeight: '100vh', padding: '20px' }}>
           <Content>
             <div style={{ background: '#fff', minHeight: '90vh', padding: '20px' }}>
-              这里是内容
+              这里是列表
+              {
+                list.map((item, index) => <li key={index}>列表{item.id}</li>)
+              }
             </div>
           </Content>
           <Footer style={{ textAlign: 'center', fontSize: '16px' }}>

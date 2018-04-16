@@ -1,14 +1,21 @@
 const path = require('path');
 module.exports={
-  entry: [ 'babel-polyfill', './src/index.js' ],
+  entry: {
+    index: [ 'babel-polyfill', './src/index.js' ],
+    vendor: [
+      'react',
+      'react-dom',
+      'antd'
+    ]
+  },
   resolve: {
     // root:
     extensions: [ '.js', '.json', '.css', '.less', 'scss' ],
     alias: {
-      'assets': path.join(__dirname, '../src/assets'),
-      'actions': path.join(__dirname, '../src/actions'),
-      'pages': path.join(__dirname, '../src/pages'),
-      'mock': path.join(__dirname, '../src/mock')
+      'Assets': path.resolve(__dirname, '../src/assets'),
+      'Actions': path.resolve(__dirname, '../src/actions'),
+      'Pages': path.resolve(__dirname, '../src/pages'),
+      'Mock': path.resolve(__dirname, '../src/mock')
     }
   },
 };
