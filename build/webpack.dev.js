@@ -15,7 +15,7 @@ module.exports = merge(baseConfig, {
   },
   devServer: {
     contentBase: path.join(__dirname, '../dist'),
-    port: 9091,
+    port: 9090,
     // quiet: true,
     overlay: {
       errors: true,
@@ -28,9 +28,9 @@ module.exports = merge(baseConfig, {
       chunks: false,
       chunkModules: false
     },
-    clientLogLevel: 'none'
+    clientLogLevel: 'none',
     // hot: true, 当前版本有错，等下一版本 ^3.1.3 出来替换
-    // historyApiFallback: true
+    historyApiFallback: true
   },
   plugins: [
     new HtmlWebpackPlugin({

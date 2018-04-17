@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 
 const commonData = (state = {}, action) => {
   switch (action.type) {
@@ -8,5 +7,6 @@ const commonData = (state = {}, action) => {
       return state;
   }
 };
-export default combineReducers({ commonData });
-
+export default {
+  commonData
+};
