@@ -12,6 +12,7 @@ module.exports = merge(baseConfig, {
   output: {
     filename: '[name].[hash:8].js',
     path: path.resolve(__dirname, '../dist'),
+    publicPath: '/'
   },
   devServer: {
     contentBase: path.join(__dirname, '../dist'),
@@ -22,15 +23,21 @@ module.exports = merge(baseConfig, {
       // warning: true
     },
     stats: {
-      reasons: false,
+      // reasons: false,
       modules: false,
       children: false,
       chunks: false,
       chunkModules: false
     },
-    clientLogLevel: 'none',
+    // clientLogLevel: 'none',
+    host: 'localhost',
     // hot: true, 当前版本有错，等下一版本 ^3.1.3 出来替换
     historyApiFallback: true
+    // historyApiFallback: { 可以CopyWebpackPlugin 将Assets中的404打包到dist
+    //   rewrites: [
+    //     { from: /./, to: '/404.html' }
+    //   ]
+    // }
   },
   plugins: [
     new HtmlWebpackPlugin({

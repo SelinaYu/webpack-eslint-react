@@ -10,7 +10,8 @@ import { Route, Switch } from 'react-router-dom';
 
 import zh_CN from 'antd/lib/locale-provider/zh_CN';
 import 'moment/locale/zh-cn';
-// import App from './pages/App/';
+import App from 'Pages/App/';
+import NotFoundPage from 'Components/NotFoundPage';
 import rootReducer from './reducers';
 import thunk from 'redux-thunk';
 import routesConfig from './routes';
@@ -32,25 +33,32 @@ const enhancer = composeEnhancers(
 );
 
 const store = createStore(combineReducers({ ...rootReducer, router: routerReducer }), enhancer);
-const RouteWithSubRoutes = route => (
-  <Route
-    path={route.path}
-    render={props => (
-      // pass the sub-routes down to keep nesting
-      <route.component {...props} routes={route.routes} />
-    )}
-  />
-);
-
+const RouteWithSubRoutes = route => {
+  const { component: Component, ...rest } = route;
+  return (
+    <Route
+      exact={true}
+      {...rest}
+      render={props => (
+        // pass the sub-routes down to keep nesting
+        <Component {...props} />
+      )}
+    />
+  );
+};
 render(
   <Provider store={store}>
-    <LocaleProvider locale={zh_CN} >
-      <ConnectedRouter history={history} >
-        <Switch>
-          {routesConfig.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
-        </Switch>
-      </ConnectedRouter>
-    </LocaleProvider>
+    <ConnectedRouter history={history} >
+      <LocaleProvider locale={zh_CN} >
+        <App>
+          <Switch>
+            {routesConfig.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
+            {/* {routesConfig.map((route, i) => <Route exact={true} key={i} path={route.path} component={route.component} />)} */}
+            <Route path="*" component={NotFoundPage} />
+          </Switch>
+        </App>
+      </LocaleProvider>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('app')
 );

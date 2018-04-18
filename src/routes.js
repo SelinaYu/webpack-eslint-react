@@ -1,19 +1,16 @@
-import App from 'Pages/App';
 import Home from 'Pages/Home';
+import List from 'Pages/List';
 const routesConfig = [
   {
     path: '/',
-    component: App,
-    routes: [
-      {
-        path: '/home',
-        component: Home
-      }
-    ]
+    component: Home,
+    exact: true
   },
   {
-    path: '/home',
-    component: Home
+    path: '/list/',
+    component: List,
+    strict: false,
+    exact: false
   }
 ];
 export default routesConfig;

@@ -435,7 +435,7 @@ module.exports = {
         'no-undefined': 'error',
         // 定义过的变量必须使用
         'no-unused-vars': [
-            'error',
+            'warn',
             {
                 vars: 'all',
                 args: 'none',
