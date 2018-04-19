@@ -38,11 +38,11 @@ class App extends Component {
             </Menu.Item>
           </Menu>
         </Sider>
-        <Layout style={{ minHeight: '100vh', padding: '20px' }}>
+        <Layout style={{ minHeight: '100vh' }}>
           <Content>
             {this.props.children}
           </Content>
-          <Footer style={{ textAlign: 'center', fontSize: '16px' }}>
+          <Footer style={{ textAlign: 'center', fontSize: '16px', height: '80px' }}>
             webpack-eslint-react &nbsp; ©2018 Created by SelinaYu
           </Footer>
         </Layout>
