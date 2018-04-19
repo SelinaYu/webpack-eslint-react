@@ -13,6 +13,7 @@ module.exports = merge(baseConfig, {
   output: {
     filename: '[name].[chunkhash:8].js',
     path: path.resolve(__dirname, '../dist'),
+    publicPath: '/'
   },
   mode: 'production',
   plugins: [

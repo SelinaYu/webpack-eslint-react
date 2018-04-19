@@ -7,10 +7,9 @@ const routesConfig = [
     exact: true
   },
   {
-    path: '/list/',
+    path: '/list',
     component: List,
-    strict: false,
-    exact: false
+    exact: true
   }
 ];
 export default routesConfig;

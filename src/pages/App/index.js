@@ -3,7 +3,6 @@ import { Layout, Menu, Icon } from 'antd';
 import { Link } from 'react-router-dom';
 import './app.css';
 const { Content, Footer, Sider } = Layout;
-const SubMenu = Menu.SubMenu;
 class App extends Component {
   constructor(props) {
     super(props);
@@ -37,14 +36,6 @@ class App extends Component {
                 <span>列表页</span>
               </Link>
             </Menu.Item>
-            <SubMenu
-              key="sub1"
-              title={<span><Icon type="user" /><span>菜单</span></span>}
-            >
-              <Menu.Item key="3">子菜单一</Menu.Item>
-              <Menu.Item key="4">子菜单二</Menu.Item>
-              <Menu.Item key="5">子菜单三</Menu.Item>
-            </SubMenu>
           </Menu>
         </Sider>
         <Layout style={{ minHeight: '100vh', padding: '20px' }}>
