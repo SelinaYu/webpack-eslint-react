@@ -10,15 +10,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = merge(baseConfig, {
   devtool: 'hidden-source-map',
-  entry: {
-    main: './src/index.js',
-    vendor: [
-      'react',
-      'react-dom',
-      'antd',
-      'babel-polyfill'
-    ]
-  },
+
   output: {
     filename: '[name].[chunkhash:8].js',
     path: path.resolve(__dirname, '../dist'),

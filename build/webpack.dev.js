@@ -12,18 +12,26 @@ module.exports = merge(baseConfig, {
   output: {
     filename: '[name].[hash:8].js',
     path: path.resolve(__dirname, '../dist'),
+    publicPath: '/'
   },
   devServer: {
     contentBase: path.join(__dirname, '../dist'),
     port: 9090,
     open: true,
-    quiet: true,
+    // quiet: true,
     overlay: {
       errors: true,
-      warning: true
+      // warning: true
+    },
+    stats: {
+      // reasons: false,
+      modules: false,
+      children: false,
+      chunks: false,
+      chunkModules: false
     },
     // hot: true, 当前版本有错，等下一版本 ^3.1.3 出来替换
-    // historyApiFallback: true
+    historyApiFallback: true
   },
   plugins: [
     new HtmlWebpackPlugin({
