@@ -3,7 +3,7 @@
 ## 介绍
 使用webpack搭建react项目，并利用eslint检查代码质量。
 
-**master 分支可用来结合其他框架如dva等，进行扩展。[在线预览](https://selinayu.github.io/webpack-eslint-react/master/index.html)**
+**master 分支可用来结合其他框架如dva等，进行扩展。**
 
 **webpack-eslint-react-redux 分支，使用了redux框架管理状态，react-router控制路由，antd 控制样式，开箱即用,想了解更多可以查看该分支**。
 
